@@ -6,3 +6,7 @@
 .info-text {
   text-align: center;
 }
+
+p {
+  white-space: pre-line;
+}
