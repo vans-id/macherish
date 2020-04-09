@@ -1,1 +1,13 @@
-<mat-toolbar color="primary">Macherish</mat-toolbar>
+<mat-toolbar color="primary">
+  <span><a routerLink="/">Macherish</a></span>
+
+  <span class="spacer"></span>
+
+  <ul>
+    <li>
+      <a mat-button routerLinkActive="mat-warn" routerLink="/create">
+        New Post
+      </a>
+    </li>
+  </ul>
+</mat-toolbar>

@@ -1,4 +1,34 @@
+/* mat-card {
+  display: flex;
+  flex-flow: row wrap;
+} */
+
 mat-form-field,
 textarea {
   width: 100%;
+}
+
+/* form {
+  flex: 2;
+} */
+
+.img-container {
+  display: flex;
+  justify-content: center;
+  /* flex: 1; */
+}
+
+img {
+  padding: 8px;
+  height: 200px;
+}
+
+@media (max-width: 600px) {
+  img {
+    height: 160px;
+  }
+}
+
+mat-spinner {
+  margin: auto;
 }

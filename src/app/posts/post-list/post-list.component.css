@@ -1,6 +1,7 @@
 :host {
   display: block;
   margin-top: 16px;
+  margin-bottom: 16px;
 }
 
 .info-text {
@@ -9,4 +10,8 @@
 
 p {
   white-space: pre-line;
+}
+
+mat-spinner {
+  margin: auto;
 }
