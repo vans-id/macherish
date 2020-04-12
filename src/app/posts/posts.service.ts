@@ -24,17 +24,17 @@ export class PostsService {
       )
       .pipe(
         map((postData) => {
-          return postData.posts.map((post) => {
-            return {
-              posts: {
+          return {
+            posts: postData.posts.map((post) => {
+              return {
                 title: post.title,
                 content: post.content,
                 id: post._id,
                 imagePath: post.imagePath,
-              },
-              maxPosts: postData.maxPosts,
-            };
-          });
+              };
+            }),
+            maxPosts: postData.maxPosts,
+          };
         })
       )
       .subscribe((transformedPostsData) => {
@@ -71,16 +71,6 @@ export class PostsService {
         postData
       )
       .subscribe((responseData) => {
-        // const post: Post = {
-        //   id: responseData.post.id,
-        //   title,
-        //   content,
-        //   imagePath: responseData.post.imagePath,
-        // };
-
-        // // Change UI
-        // this.posts.push(post);
-        // this.postsUpdated.next([...this.posts]);
         this.router.navigate(["/"]);
       });
   }
@@ -103,26 +93,11 @@ export class PostsService {
     this.http
       .put(`http://localhost:5000/api/posts/${id}`, postData)
       .subscribe((response) => {
-        // const updatedPost = [...this.posts];
-        // const oldPostIndex = updatedPost.findIndex((p) => p.id === id);
-
-        // const post: Post = { id, title, content, imagePath: "" };
-        // updatedPost[oldPostIndex] = post;
-
-        // this.posts = updatedPost;
-        // this.postsUpdated.next([...this.posts]);
         this.router.navigate(["/"]);
       });
   }
 
   deletePost(postId: string) {
-    this.http
-      .delete(`http://localhost:5000/api/posts/${postId}`)
-      .subscribe(() => {
-        // Change UI
-        const updatedPosts = this.posts.filter((post) => post.id !== postId);
-        this.posts = updatedPosts;
-        this.postsUpdated.next([...this.posts]);
-      });
+    return this.http.delete(`http://localhost:5000/api/posts/${postId}`);
   }
 }
