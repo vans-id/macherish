@@ -3,6 +3,10 @@
   flex-flow: row wrap;
 } */
 
+mat-card {
+  margin-bottom: 16px;
+}
+
 mat-form-field,
 textarea {
   width: 100%;
@@ -31,4 +35,17 @@ img {
 
 mat-spinner {
   margin: auto;
+}
+
+input[type="file"] {
+  visibility: hidden;
+}
+
+.image-preview {
+  height: 100px;
+  margin: 16px 0;
+}
+
+.image-preview img {
+  max-height: 100%;
 }
