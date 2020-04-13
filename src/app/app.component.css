@@ -1,6 +1,12 @@
 main {
   margin-top: 1rem;
-  width: 80%;
+  width: 90%;
+  min-height: 100vh;
   margin: auto;
-  margin-top: 16px;
+}
+
+mat-sidenav {
+  width: 250px;
+  background-color: #673ab7;
+  color: #fff;
 }

@@ -43,7 +43,7 @@ mat-paginator {
   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
 }
 
-@media (max-width: 800px) {
+@media (max-width: 950px) {
   .post-container {
     display: block;
   }

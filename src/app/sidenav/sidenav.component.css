@@ -1,0 +1,29 @@
+.container {
+  width: 85%;
+  margin: 16px auto;
+}
+
+.container img {
+  width: 80px;
+  border-radius: 50%;
+  margin-bottom: 16px;
+}
+
+ul {
+  list-style: none;
+  margin: 16px 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  padding: 0 8px 0;
+}
+
+mat-divider {
+  border-top-color: #bdbdbd;
+}
+
+mat-icon {
+  margin-right: 16px;
+}

@@ -1,0 +1,38 @@
+<div class="container">
+  <img src="../../assets/images/admin.png" alt="admin" />
+  <h3 class="mat-h2 mat-subtitle">Fannie Junneville</h3>
+
+  <mat-divider></mat-divider>
+
+  <ul>
+    <li>
+      <a
+        mat-button
+        routerLinkActive="mat-accent"
+        routerLink="/"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        <mat-icon>dashboard</mat-icon>
+        Dashboard
+      </a>
+    </li>
+    <li>
+      <a mat-button routerLinkActive="mat-accent" routerLink="/create">
+        <mat-icon>monetization_on</mat-icon>
+        Sell Item
+      </a>
+    </li>
+    <li>
+      <a mat-button routerLinkActive="mat-accent" routerLink="/login">
+        <mat-icon>people</mat-icon>
+        Login
+      </a>
+    </li>
+    <li>
+      <a mat-button routerLinkActive="mat-accent" routerLink="/signup">
+        <mat-icon>people</mat-icon>
+        Sign Up
+      </a>
+    </li>
+  </ul>
+</div>

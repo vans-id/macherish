@@ -4,7 +4,7 @@
 } */
 
 mat-card {
-  margin-bottom: 16px;
+  margin: 16px 0;
 }
 
 mat-form-field,
@@ -24,7 +24,7 @@ textarea {
 
 img {
   padding: 8px;
-  height: 200px;
+  height: 160px;
 }
 
 @media (max-width: 600px) {
