@@ -15,7 +15,8 @@ ul {
   padding: 0;
 }
 
-a {
+a,
+button {
   text-decoration: none;
   padding: 0 8px 0;
 }

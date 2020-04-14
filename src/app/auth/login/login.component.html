@@ -1,11 +1,11 @@
 <mat-card>
-  <mat-spinner *ngIf="isLoading"></mat-spinner>
+  <!-- <mat-spinner *ngIf="isLoading"></mat-spinner> -->
 
-  <div class="img-container" *ngIf="!isLoading">
+  <div class="img-container">
     <img src="../../../assets/images/login2.jpg" alt="" />
   </div>
 
-  <form (submit)="onLogin(loginForm)" #loginForm="ngForm" *ngIf="!isLoading">
+  <form (submit)="onLogin(loginForm)" #loginForm="ngForm">
     <mat-form-field>
       <input
         name="email"
@@ -36,7 +36,10 @@
         Please enter a valid password
       </mat-error>
     </mat-form-field>
-    <button mat-raised-button color="accent" type="submit">
+    <button mat-raised-button color="accent" type="submit" *ngIf="!isLoading">
+      Login
+    </button>
+    <button mat-raised-button disabled type="submit" *ngIf="isLoading">
       Login
     </button>
   </form>

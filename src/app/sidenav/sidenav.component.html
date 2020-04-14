@@ -16,23 +16,35 @@
         Dashboard
       </a>
     </li>
-    <li>
-      <a mat-button routerLinkActive="mat-accent" routerLink="/create">
-        <mat-icon>monetization_on</mat-icon>
-        Sell Item
-      </a>
-    </li>
-    <li>
-      <a mat-button routerLinkActive="mat-accent" routerLink="/login">
-        <mat-icon>people</mat-icon>
-        Login
-      </a>
-    </li>
-    <li>
-      <a mat-button routerLinkActive="mat-accent" routerLink="/signup">
-        <mat-icon>people</mat-icon>
-        Sign Up
-      </a>
-    </li>
+
+    <span *ngIf="userIsAuthenticated">
+      <li>
+        <a mat-button routerLinkActive="mat-accent" routerLink="/create">
+          <mat-icon>monetization_on</mat-icon>
+          Sell Item
+        </a>
+      </li>
+      <li>
+        <button mat-button (click)="onLogout()">
+          <mat-icon>exit_to_app</mat-icon>
+          Logout
+        </button>
+      </li>
+    </span>
+
+    <span *ngIf="!userIsAuthenticated">
+      <li>
+        <a mat-button routerLinkActive="mat-accent" routerLink="/login">
+          <mat-icon>people</mat-icon>
+          Login
+        </a>
+      </li>
+      <li>
+        <a mat-button routerLinkActive="mat-accent" routerLink="/signup">
+          <mat-icon>group_add</mat-icon>
+          Sign Up
+        </a>
+      </li>
+    </span>
   </ul>
 </div>

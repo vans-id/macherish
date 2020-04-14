@@ -31,6 +31,7 @@ export class PostsService {
                 content: post.content,
                 id: post._id,
                 imagePath: post.imagePath,
+                creator: post.creator,
               };
             }),
             maxPosts: postData.maxPosts,
@@ -38,6 +39,7 @@ export class PostsService {
         })
       )
       .subscribe((transformedPostsData) => {
+        console.log(transformedPostsData);
         this.posts = transformedPostsData.posts;
         this.postsUpdated.next({
           posts: [...this.posts],
@@ -56,6 +58,7 @@ export class PostsService {
       title: string;
       content: string;
       imagePath: string;
+      creator: string;
     }>(`http://localhost:5000/api/posts/${id}`);
   }
 
@@ -87,7 +90,14 @@ export class PostsService {
       postData.append("image", image, title);
     } else {
       // Send normal json data (string)
-      postData = { id, title, content, imagePath: image };
+      postData = {
+        id,
+        title,
+        content,
+        imagePath: image,
+        creator: null,
+        // update creator at backend
+      };
     }
 
     this.http
