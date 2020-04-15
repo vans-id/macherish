@@ -9,9 +9,12 @@ const router = express.Router();
 router.post("/signup", (req, res, next) => {
   bcrypt.hash(req.body.password, 10).then((hash) => {
     const user = new User({
+      name: req.body.name,
       email: req.body.email,
       password: hash,
     });
+
+    console.log(user);
 
     user
       .save()
@@ -46,7 +49,10 @@ router.post("/login", (req, res, next) => {
       }
       // generate JWT
       const token = jwt.sign(
-        { email: fetchedUser.email, userId: fetchedUser._id },
+        {
+          email: fetchedUser.email,
+          userId: fetchedUser._id,
+        },
         "secret_this_should_be_longer",
         { expiresIn: "1h" }
       );
@@ -55,6 +61,7 @@ router.post("/login", (req, res, next) => {
         token: token,
         expiresIn: 3600,
         userId: fetchedUser._id,
+        name: fetchedUser.name,
       });
     })
     .catch((err) => {

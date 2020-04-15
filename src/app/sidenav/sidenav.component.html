@@ -1,6 +1,7 @@
 <div class="container">
   <img src="../../assets/images/admin.png" alt="admin" />
-  <h3 class="mat-h3 mat-subheading-2">Fannie Junneville</h3>
+  <h3 class="mat-h3 mat-subheading-2" *ngIf="username">{{ username }}</h3>
+  <h3 class="mat-h3 mat-subheading-2" *ngIf="!username">Guest</h3>
 
   <mat-divider></mat-divider>
 

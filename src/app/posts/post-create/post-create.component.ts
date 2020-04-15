@@ -4,6 +4,7 @@ import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { ActivatedRoute, ParamMap } from "@angular/router";
 import { Post } from "./../post.model";
 import { mimeType } from "./mime-type.validator";
+import { AuthService } from "src/app/auth/auth.service";
 
 @Component({
   selector: "app-post-create",

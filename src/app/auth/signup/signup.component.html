@@ -6,6 +6,21 @@
   <form (submit)="onSignup(signupForm)" #signupForm="ngForm">
     <mat-form-field>
       <input
+        name="name"
+        ngModel
+        #nameInput="ngModel"
+        type="text"
+        placeholder="Your Name"
+        matInput
+        required
+      />
+      <mat-error *ngIf="nameInput.invalid">
+        Please enter your full name
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input
         name="email"
         ngModel
         #emailInput="ngModel"
@@ -27,7 +42,7 @@
         #passwordInput="ngModel"
         type="password"
         matInput
-        placeholder="Password"
+        placeholder="Create Password"
         required
       />
       <mat-error *ngIf="passwordInput.invalid">
