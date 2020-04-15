@@ -26,7 +26,7 @@ router.post("/signup", (req, res, next) => {
       })
       .catch((err) => {
         res.status(500).json({
-          error: err,
+          message: "E-mail has already be taken",
         });
       });
   });
@@ -65,7 +65,7 @@ router.post("/login", (req, res, next) => {
       });
     })
     .catch((err) => {
-      return res.status(401).json({ message: "auth failed" });
+      return res.status(401).json({ message: "Invalid username and password" });
     });
 });
 

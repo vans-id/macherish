@@ -8,11 +8,21 @@
   text-align: center;
 }
 
-p {
+.post-content {
   overflow: scroll;
   white-space: pre-line;
   height: 450px;
-  max-width: 400px;
+  width: 400px;
+}
+
+.post-content h4 {
+  margin-top: 16px;
+  display: flex;
+  align-items: center;
+}
+
+mat-icon {
+  margin-right: 5px;
 }
 
 mat-spinner {
@@ -53,7 +63,7 @@ mat-paginator {
     height: auto;
   }
 
-  p {
+  .post-content {
     overflow: visible;
     height: auto;
   }

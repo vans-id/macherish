@@ -32,6 +32,7 @@ export class PostsService {
                 id: post._id,
                 imagePath: post.imagePath,
                 creator: post.creator,
+                creatorName: post.creatorName,
               };
             }),
             maxPosts: postData.maxPosts,
@@ -59,14 +60,16 @@ export class PostsService {
       content: string;
       imagePath: string;
       creator: string;
+      creatorName: string;
     }>(`http://localhost:5000/api/posts/${id}`);
   }
 
-  addPost(title: string, content: string, image: File) {
+  addPost(title: string, content: string, image: File, creatorName: string) {
     const postData = new FormData();
     postData.append("title", title);
     postData.append("content", content);
     postData.append("image", image, title);
+    postData.append("creatorName", creatorName);
 
     this.http
       .post<{ message: string; post: Post }>(
@@ -78,7 +81,13 @@ export class PostsService {
       });
   }
 
-  updatePost(id: string, title: string, content: string, image: File | string) {
+  updatePost(
+    id: string,
+    title: string,
+    content: string,
+    image: File | string,
+    username: string
+  ) {
     let postData: FormData | Post;
 
     if (typeof image === "object") {
@@ -96,6 +105,7 @@ export class PostsService {
         content,
         imagePath: image,
         creator: null,
+        creatorName: username,
         // update creator at backend
       };
     }

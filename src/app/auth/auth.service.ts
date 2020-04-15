@@ -46,9 +46,14 @@ export class AuthService {
 
     this.http
       .post("http://localhost:5000/api/user/signup", registerData)
-      .subscribe((response) => {
-        console.log(response);
-      });
+      .subscribe(
+        () => {
+          this.router.navigate["/"];
+        },
+        (error) => {
+          this.authStatusListener.next(false);
+        }
+      );
   }
 
   login(email: string, password: string) {
@@ -58,30 +63,40 @@ export class AuthService {
         "http://localhost:5000/api/user/login",
         authData
       )
-      .subscribe((response) => {
-        const token = response.token;
-        this.token = token;
+      .subscribe(
+        (response) => {
+          const token = response.token;
+          this.token = token;
 
-        if (token) {
-          const expiresInDuration = response.expiresIn;
-          this.setAuthTimer(expiresInDuration);
+          if (token) {
+            const expiresInDuration = response.expiresIn;
+            this.setAuthTimer(expiresInDuration);
 
-          this.isAuthenticated = true;
-          this.authStatusListener.next(true);
+            this.isAuthenticated = true;
+            this.authStatusListener.next(true);
 
-          this.userId = response.userId;
-          this.username = response.name;
-          this.usernameStatusListener.next(response.name);
+            this.userId = response.userId;
+            this.username = response.name;
+            this.usernameStatusListener.next(response.name);
 
-          const now = new Date();
-          const expirationDate = new Date(
-            now.getTime() + expiresInDuration * 1000
-          );
-          this.saveAuthData(token, expirationDate, this.userId, this.username);
+            const now = new Date();
+            const expirationDate = new Date(
+              now.getTime() + expiresInDuration * 1000
+            );
+            this.saveAuthData(
+              token,
+              expirationDate,
+              this.userId,
+              this.username
+            );
 
-          this.router.navigate(["/"]);
+            this.router.navigate(["/"]);
+          }
+        },
+        (error) => {
+          this.authStatusListener.next(false);
         }
-      });
+      );
   }
 
   autoAuthUser() {

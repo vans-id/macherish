@@ -9,7 +9,14 @@
       <div class="post-image">
         <img [src]="post.imagePath" [alt]="post.title" />
       </div>
-      <p class="post-content">{{ post.content }}</p>
+      <div class="post-content">
+        <h4 class="mat-h4 mat-subheading-1">
+          <mat-icon>person</mat-icon>
+          {{ post.creatorName }}
+        </h4>
+        <mat-divider></mat-divider>
+        <p>{{ post.content }}</p>
+      </div>
     </div>
     <mat-action-row *ngIf="userIsAuthenticated && userId === post.creator">
       <a [routerLink]="['/edit', post.id]" mat-button color="primary">EDIT</a>

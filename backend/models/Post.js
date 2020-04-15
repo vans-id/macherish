@@ -18,6 +18,10 @@ const postSchema = mongoose.Schema({
     ref: "User",
     required: true,
   },
+  creatorName: {
+    type: String,
+    required: true,
+  },
 });
 
 module.exports = mongoose.model("Post", postSchema);

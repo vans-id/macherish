@@ -9,6 +9,8 @@ import { PostCreateComponent } from "./posts/post-create/post-create.component";
 import { PostListComponent } from "./posts/post-list/post-list.component";
 import { SidenavComponent } from "./sidenav/sidenav.component";
 import { AuthInterceptor } from "./auth/auth-interceptor";
+import { ErrorInterceptor } from "./error-interceptor";
+import { ErrorComponent } from "./error/error.component";
 
 import { MatInputModule } from "@angular/material/input";
 import { MatCardModule } from "@angular/material/card";
@@ -24,6 +26,7 @@ import { MatDividerModule } from "@angular/material/divider";
 import { LoginComponent } from "./auth/login/login.component";
 import { SignupComponent } from "./auth/signup/signup.component";
 import { MatIconModule } from "@angular/material/icon";
+import { MatDialogModule } from "@angular/material/dialog";
 
 @NgModule({
   declarations: [
@@ -34,6 +37,7 @@ import { MatIconModule } from "@angular/material/icon";
     SidenavComponent,
     LoginComponent,
     SignupComponent,
+    ErrorComponent,
   ],
   imports: [
     BrowserModule,
@@ -52,10 +56,13 @@ import { MatIconModule } from "@angular/material/icon";
     MatSidenavModule,
     MatDividerModule,
     MatIconModule,
+    MatDialogModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
   ],
   bootstrap: [AppComponent],
+  entryComponents: [ErrorComponent],
 })
 export class AppModule {}
