@@ -35,14 +35,16 @@ exports.userLogin = (req, res, next) => {
   User.findOne({ email: req.body.email })
     .then((user) => {
       if (!user) {
-        return res.status(401).json({ message: "auth failed" });
+        return res
+          .status(401)
+          .json({ message: "That email is not registered" });
       }
       fetchedUser = user;
       return bcrypt.compare(req.body.password, user.password);
     })
     .then((result) => {
       if (!result) {
-        return res.status(401).json({ message: "auth failed" });
+        return res.status(401).json({ message: "Wrong email or password" });
       }
       // generate JWT
       const token = jwt.sign(
@@ -62,6 +64,6 @@ exports.userLogin = (req, res, next) => {
       });
     })
     .catch((err) => {
-      return res.status(401).json({ message: "Invalid username and password" });
+      return res.status(500).json({ message: "Auth failed" });
     });
 };
