@@ -48,4 +48,9 @@
       </li>
     </span>
   </ul>
+
+  <div *ngIf="!userIsAuthenticated">
+    <mat-divider></mat-divider>
+    <p class="mat-small">Start sell your Macs by Create an Account</p>
+  </div>
 </div>
